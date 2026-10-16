@@ -1,0 +1,12 @@
+{
+  "name": "opencode-provider-cliproxy",
+  "version": "0.1.0",
+  "description": "OpenCode plugin that lists models from a CLIProxyAPI instance's /v1/models endpoint",
+  "type": "module",
+  "main": "index.ts",
+  "exports": { ".": "./index.ts" },
+  "files": ["index.ts", "README.md"],
+  "keywords": ["opencode", "opencode-plugin", "cliproxyapi", "cliproxy", "models"],
+  "license": "MIT",
+  "peerDependencies": { "@opencode/plugin": ">=2.0.0" }
+}
