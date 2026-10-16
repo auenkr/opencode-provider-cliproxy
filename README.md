@@ -83,7 +83,12 @@ Everything can also be passed as plugin options, which take precedence over the 
 
 - Models are added to the provider; existing entries are left alone, so per-model overrides such as `limit`,
   `capabilities`, or `body` are preserved.
-- A model that disappears from the endpoint is dropped on the next refresh.
+- When the model list includes CLIProxyAPI `thinking` metadata, the plugin exposes each supported effort as an
+  OpenCode model variant and routes the selected effort through `reasoningEffort`. The level names reported by the
+  endpoint become the variant ids, and `zero_allowed` adds a `none` variant. A `variants` list you set yourself for a
+  model in `providers.cliproxy.models` takes precedence over the generated one.
+- The plugin only adds and updates models. A model that disappears from the endpoint stays registered until OpenCode
+  restarts, so an entry you maintain by hand in `providers.cliproxy.models` is never removed by a refresh.
 - `gpt-image-*` is excluded by default because image models do not fit the chat-completions route.
 - The endpoint reports no context limits or capabilities, so OpenCode's fallback assumptions apply (tools enabled,
   text and image input, 200k context, 32k output). Set `limit` or `capabilities` per model in `providers.cliproxy.models`
